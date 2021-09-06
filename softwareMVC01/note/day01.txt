@@ -1,0 +1,76 @@
+1、课程目标
+·MVC（设计模式）
+·DAO（设计模式）
+2、考核
+·MVC测试题
+·自学内容（视频）
+3、专题
+MVC：model 模型   View视图  C控制器
+V:前端网页、JSP（给用户看的）
+M：JavaBean（操作数据库，对比账号）
+C:Servlet（决定用户数据的流向）
+4、SSH、SSM
+
+概述
+1、B/S和C/S（掌握）
+	浏览器/服务器  前端开发（浏览器）/Java Web服务器端
+	客户端/服务器 QQ、eclipse
+2、区别、优缺点（有理有据选择）
+		B/S				C/S
+	     易维护			更新麻烦（特别是需要专人维护）
+	     成本低			开发服务器、客户端
+	  
+	  服务压力全部由S承担   C分担了大量的运算（电脑配置高）
+	 安全性相对较低	安全性相对较高
+一般情况：B/S适用于大众用户（量大权限低），C/S内部人员
+3、了解 Java Web
+Java程序设计（面向对象程序设计）    JavaSE 标准开发
+							   JavaME 移动开发
+Java Web + 框架开发			   JavaEE J2EE 企业级开发
+4、了解课外知识
+	Java体系结构
+5、JVM 、JRE、JDK 是什么？关系？
+6、java.exe   javac.exe  javadoc.exe /** 文档 */ jar.exe
+7、后端开发技术
+	JSP 、 ASP 、 PHP ……
+	
+	
+二、环境配置
+1、JDk的安装
+2、Tomcat的安装
+	·8080 如何修改
+	·HTTP1.1 P58
+3、eclipse
+3、MySQL
+	ACCESS、MySQL、SQLServer、Oracle
+
+编程规范：阿里巴巴的Java编程规范手册
+
+三、前端开发基础
+1、表单
+	文本框、密码框、单选框、复选框
+	提交按钮、重置、普通按钮、image
+	隐藏域、file
+2、收集数据
+	·表单 form action=URL 
+	·超链接  https://www.baidu.com?name=value
+3、CSS
+	1、内部样式 html头部
+	2、外部样式 link链接一个*.css文件
+	3、行内样式  直接写在html的开标签中
+4、JavaScript
+	1、JavaScript的引入
+	2、DOM
+	3、JavaScript的BOM提示框
+	4、JavaScript的变量var
+	5、JavaScript的函数function
+	6、常用事件 onclick、onchange、onblur、onsubmit
+
+
+
+
+
+
+
+
+
