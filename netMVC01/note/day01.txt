@@ -1,0 +1,63 @@
+仓库地址：
+https://gitee.com/lanquanxiang/javaweb2019
+课程学习：超星+线下
+课程内容：
+Java方向
+	JavaSE（面向对象程序设计）
+	JavaWeb（服务端开发）--服务器 JSP、Servlet
+	JavaEE企业级开发（移动业务...）框架Spring  SpringMVC
+目标：
+	1、MVC设计模式【掌握】P308
+		M 模型model：数据处理
+		V 视图View：用户能看见的页面 JSP Java服务器页面（动态）
+		C 控制器：控制数据的流向和处理流程
+	2、DAO设计模式【掌握】
+		数据访问对象（一套访问数据库的标准规范）
+		JavaSE
+	3、框架设计【了解】
+		SSM Spring SpringMVC  Mybatis
+考核：40% 超星 + 60% 考试
+	编程题50分
+QQ：497620334   Tel：15123213773
+	
+课外：
+1、设计模式
+
+Java Web概述
+1、Java体系结构
+	JVM：Java虚拟机
+	JRE：Java运行时环境
+	JDK：Java开发工具包
+	关系：JDK>JRE>JVM
+2、常用API
+	java.exe 执行
+	javac.exe 编译
+	javadoc.exe 提取帮助文档 /**  文档注释  */
+	jar.exe 打包程序
+3、B/S和C/S
+	浏览器/服务器  B/S
+	客户端/服务器 C/S
+4、优缺点（理解：自主选择到底用哪一种结构）
+	   				B/S 				C/S
+开发和维护成本		低                                        高
+服务器负载		服务器承担压力	将一部分处理交给客户端
+安全性			   相对较低			      相对高
+Q：如何选择？
+	普适性的大众（B/S，权限低），专人专用，权限高（C/S)
+5、B/S开发技术
+	HTML、CSS、JS   JSP
+	
+软件：
+1、eclipse（neon）
+2、JDK（1.8）
+3、MySQL（5.X)
+4、数据库的可视化工具
+5、Tomcat 8.0
+位置：不能有中文，特殊字符
+6、浏览器
+作业：配置环境（任务点）
+
+
+
+
+

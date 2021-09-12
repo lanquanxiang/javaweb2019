@@ -46,25 +46,6 @@ Java Web + 框架开发			   JavaEE J2EE 企业级开发
 
 编程规范：阿里巴巴的Java编程规范手册
 
-三、前端开发基础
-1、表单
-	文本框、密码框、单选框、复选框
-	提交按钮、重置、普通按钮、image
-	隐藏域、file
-2、收集数据
-	·表单 form action=URL 
-	·超链接  https://www.baidu.com?name=value
-3、CSS
-	1、内部样式 html头部
-	2、外部样式 link链接一个*.css文件
-	3、行内样式  直接写在html的开标签中
-4、JavaScript
-	1、JavaScript的引入
-	2、DOM
-	3、JavaScript的BOM提示框
-	4、JavaScript的变量var
-	5、JavaScript的函数function
-	6、常用事件 onclick、onchange、onblur、onsubmit
 
 
 
