@@ -16,7 +16,7 @@
 </script>
 </head>
 <body>
-<form action="B.jsp" method="post" onsubmit="return fun()">
+<form action="show.jsp" method="post" onsubmit="return fun()">
 	用户名:<input type="text" name="username" id="username"> <br/>
 	爱好：
 	<input type="checkbox" name="aihao" value="唱歌" >唱歌

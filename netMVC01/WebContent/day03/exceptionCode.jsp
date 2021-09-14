@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="showException.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="exceptionCode.jsp" %>
 <%
-	//int i=2; 会出现重复定义变量或者是方法
+	int i=1;
+	out.print(i/0);
 %>
 </body>
 </html>

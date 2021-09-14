@@ -1,0 +1,73 @@
+一、作用域
+	page、request、session、application
+1.作用域是用来做什么的？
+	保存数据的。目的：进行数据共享
+	扩展：HTTP是无状态
+2.区别
+	page：当前页面有效
+	request：一次请求有效（注意：你使用的方式【请求转发、重定向】）
+	session：一次会话有效（打开浏览器访问资源--->关闭浏览器(默认间隔时间)）
+	application:应用级存储（服务器级别）(启动服务器开始-->关闭服务器)
+				特点：所有用户共享（慎用、存储服务器的配置信息 或者是 网站访问量）
+3.如何使用？P136
+	CRUD增删改查（键值对  Map   key--value）
+	1.增加
+		xxx.setAttribute("key","value");  key字符串 value任意类型
+	2.删除
+		xxx.removeAttribute("key") 没有返回值
+	3.修改
+		xxx.setAttribute("key","新的值");  //可以用新的值来进行覆盖
+	4.查询
+		Object xx.getAttribute("key"); //得到的是Object，一般情况下，需要进行强制类型转换
+
+4.P150  session  P182介绍：保存用户数据
+	HTTP是无状态？如何来解决？
+		1.客户端cookie技术
+		2.服务器session  基于cookie（SESSIONID）
+	
+	1.重要：你可以通过request来获得SESSION   （注意：request.getSession()）
+	2.Session的有效期(手动控制SESSION)
+		1.设置有效期，超过时间自动失效 P150 时间是秒为单位  60*60
+		2.立即销毁	
+			1.销毁登录相关数据  xxx.removeAttribute("key")
+			2.销毁整个SESSION  session.invalidate()
+
+5.Application   getServletContext方法可以获得application
+	
+		
+二、其他内置对象
+1.page 页面本身
+2.pageContext 用这个内置对象可以来找到其他内置对象
+	作用：EL表达式的时候可能会用到
+3.config 配置
+4.exception 异常
+	注意：
+		1.不是所有的JSP都有这个内置对象
+		2.只有当isErrorPage = true 时，这个内置对象才存在
+		
+三、内置对象分类
+1）	输入输出对象：request、response、out
+2）	通信对象：session、application、pageContext
+3）	servlet对象：page、config
+4）	错误对象：exception
+
+
+四、JavaBean
+1.是什么？
+	Java类（存储数据、处理数据）
+2.分类
+	1.值JavaBean（封装数据）   ---   实体 entity
+	2.工具类JavaBean（处理数据）--- 方法/函数
+3.注意（值JavaBean）
+	1.类名要大写
+	2.私有成员变量名首字母要小写【注意】
+	3.要为私有成员变量提供get/set方法
+	4.要为这个类提供无参和有参的构造方法
+	
+试一试：
+	1.创建User.java （包含用户名和密码）
+	2.创建UserUtil.java （包含了登录这个方法）
+	
+
+
+		

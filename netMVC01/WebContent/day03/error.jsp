@@ -7,7 +7,10 @@
 <title>文件不存在</title>
 </head>
 <body>
-<%  response.setStatus(200);  %>
+<%  response.setStatus(200);  
+
+	
+%>
 你想访问的文件暂时还没有开发出来，你可以喝杯咖啡等一等。
 </body>
 </html>
