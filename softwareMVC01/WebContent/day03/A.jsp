@@ -10,7 +10,7 @@
 <body>
 <%
 	int[] x = {1,2,3,4,5};
-	//out.print(x[10]);
+	out.print(x[10]);
 
 %>
 <%=Arrays.toString(x) %>
