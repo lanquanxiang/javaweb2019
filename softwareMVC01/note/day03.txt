@@ -1,0 +1,59 @@
+一、JSP是什么？
+	·Java服务器页面   Java Server page
+	·本质上是一个Java编写的类
+	·由Servlet引申出来的技术（Java -- >  Servlet --- > JSP）
+二、JSP特点
+	·Java有的特点，他都有   P168
+	·可以编写Java 、 编写HTML
+三、执行过程  P172
+	·转换为Servlet
+	·编译为class
+	·执行
+四、JSP基本语法  P176
+	1、构成
+		·JSP头部指令
+		·HTML
+		·Java代码
+	2、Java代码
+		·Java代码段   <%  Java代码;（不要忘记分号）   %>
+			可以任意截断
+		·Java的全局声明
+			<%!      %>
+		·【掌握】表达式    <%= 表达式（不要分号）  %>
+		·JSP注释 P179：查看客户端源码的时候，是看不见这个注释
+	【重点】在视图层显示变量（数据）
+		1.使用out来进行输出
+		2.使用JSP表达式
+五、JSP指令 P180   <%@ 指令  属性="属性值"  属性="属性值"  属性="属性值"%>
+	1、page指令
+		import、extends
+		pageEncoding、contentType
+		MIME（7种 text、image、video、audio、message、application、multipart）
+		
+		isErrorPage= true/false
+		errorPage= URI 
+		【问题】常见的Java运行时异常有哪些?
+		【问题】系统无法显示自定义的错误页面内容？  显示成了IE的提示信息
+			【解决】浏览器认为：发生错误之后，你的错误页面内容太少，没有价值
+				·增加内容
+				·ie高级选项中可以去掉“友好提示信息”【不可选】
+				·设置服务器的状态是正常的 200
+		【问题】能够批量配置错误页面？ 404
+			【解决】需要在web.xml中进行配置
+				  <error-page>
+  						<error-code> 或者<exception-type>
+  						<location>/开头</location>
+
+	2、include指令  P181 
+		<%@ include file=""   %>
+		【注意】1.包含方式-->源码包含    【问题】变量重复定义；HTML标签、id属性都有可能发生冲突
+		
+		【解决】JSP动作元素来进行包含 --->页面（结果）包含
+			P188
+				<jsp:include page=""/>
+		【作用】导航栏、版权信息
+	3、taglib 标签库（引入第三方的标签库）	P217
+		<%@ taglib uri="标签库的地址" prefix="c" %>	  eg. c:div
+		
+		
+		
