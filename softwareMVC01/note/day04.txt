@@ -17,7 +17,7 @@ JSP内置对象P182
 	request 类型 HttpServletRequest	P126			response 类型 HttpServletResponse P115
 	1.获得请求头信息 P127								1.设置响应头信息 P116
 		request.getContextPath()						·自动刷新 setHeader("Refresh","时间(秒)")    P123  line9
-														·自动跳转 setHeader("Refresh","时间(秒);URL=跳转的地址")  P122  line9
+		得到的永远是根路径									·自动跳转 setHeader("Refresh","时间(秒);URL=跳转的地址")  P122  line9
 														·禁止缓存
 														response.setHeader("Cache-Control","no-cache");禁止缓存
 														response.setHeader("Pragma","no-cache");禁止缓存此响应

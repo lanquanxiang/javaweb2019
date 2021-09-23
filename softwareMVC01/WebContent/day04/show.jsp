@@ -14,7 +14,7 @@
 	String password = request.getParameter("password");
 	String[] hobbys = request.getParameterValues("hobby");
 	
-	
+	//int X=1;
 %>
 姓名：<%=username %><br/>
 密码：<%=password %><br/>
