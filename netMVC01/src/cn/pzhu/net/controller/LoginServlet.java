@@ -43,7 +43,8 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("msg", "你的输入不符合规定!");
 			request.getSession().setAttribute("flag", false);
 			response.sendRedirect(request.getContextPath()+"/day06/show.jsp");
-		}else{
+			return ;
+		}
 		
 		//4.可能需要考虑调用值JavaBean对数据进行封装
 		User user = new User(username, password);
@@ -63,8 +64,6 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("msg", "密码错误!");
 			request.getSession().setAttribute("flag", false);
 			response.sendRedirect(request.getContextPath()+"/day06/show.jsp");
-		}
-		
 		}
 		
 	}
