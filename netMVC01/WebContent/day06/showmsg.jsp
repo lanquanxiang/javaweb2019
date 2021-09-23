@@ -10,13 +10,12 @@
 <body>
 	<%=	session.getAttribute("msg")	%>
 	<%
-		boolean flag = (boolean)session.getAttribute("flag");
-		if(flag){
+		if(session.getAttribute("flag")!=null && (boolean)session.getAttribute("flag")){
 			String[] aihaos = (String[])session.getAttribute("aihao");
 			out.print(Arrays.toString(aihaos));
 		}
 	%>
 	<br/>
-	<a href="logout.jsp">销毁session</a>
+	<a href="<%=request.getContextPath() %>/LogoutServlet">销毁session</a>
 </body>
 </html>
