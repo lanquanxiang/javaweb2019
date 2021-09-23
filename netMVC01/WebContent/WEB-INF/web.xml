@@ -17,9 +17,9 @@
     <servlet-name>zhangsan</servlet-name>
     <servlet-class>cn.pzhu.net.controller.LoginServlet</servlet-class>
     <init-param>
-    	<param-name>coding</param-name>
-    	<param-value>UTF-8</param-value>
-    </init-param>
+      	<param-name>coding</param-name>
+      	<param-value>UTF-8</param-value>
+   	</init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>

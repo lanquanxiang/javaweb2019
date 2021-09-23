@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		if ("".equals(username)||"".equals(password)||aihaos==null) {
 			request.getSession().setAttribute("msg", "你的输入不符合规定!");
 			request.getSession().setAttribute("flag", false);
-			response.sendRedirect(request.getContextPath()+"/day06/show.jsp");
+			response.sendRedirect(request.getContextPath()+"/day06/showmsg.jsp");
 			return ;
 		}
 		
@@ -59,11 +59,11 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("msg", "欢迎"+username+"登录!");
 			request.getSession().setAttribute("flag", true);
 			request.getSession().setAttribute("aihao", aihaos);
-			response.sendRedirect(request.getContextPath()+"/day06/show.jsp");
+			response.sendRedirect(request.getContextPath()+"/day06/showmsg.jsp");
 		}else{
 			request.getSession().setAttribute("msg", "密码错误!");
 			request.getSession().setAttribute("flag", false);
-			response.sendRedirect(request.getContextPath()+"/day06/show.jsp");
+			response.sendRedirect(request.getContextPath()+"/day06/showmsg.jsp");
 		}
 		
 	}

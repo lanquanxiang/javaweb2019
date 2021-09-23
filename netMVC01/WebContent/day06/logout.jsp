@@ -7,8 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% session.invalidate();
-	response.setHeader("Refresh","1;URL=show.jsp");
+<!-- 
+<%
+/*	session.invalidate();
+	response.setHeader("Refresh","1;URL=login.jsp");
+	*/
 %>
+
+ -->
 </body>
 </html>
