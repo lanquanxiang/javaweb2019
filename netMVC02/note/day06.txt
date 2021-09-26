@@ -1,0 +1,44 @@
+控制层：Servlet【重点】P80
+一、servlet是什么？
+	·本质上是Java类   --->  src
+	·实现了Servlet接口 ---> 覆写某些方法
+二、Servlet的特点
+	·调用Java API、Servlet API
+	·性能高效（多线程服务）
+三、Servlet的体系结构
+	·servlet需要实现的接口有三个
+	·为了节省开发时间，GenericServlet来实现了
+	·为了增加关于HTTP的内容，使用HTTPServlet来继承GenericServlet
+	·综上，我们创建Servlet的时候，只需要去继承HTTPServlet
+四、Servlet的生命周期 P85
+	1.创建 constructor  -- 只执行1次 服务器完成
+	2.初始化 init -- 只执行1次 服务器完成
+	3.激活 Service -- 多次 ，访问的时候被调用   doMethod
+	4.销毁destroy -- 只执行1次 服务器完成
+	扩展：【问题】Service方法操作公共的数据？多线程的同步问题？
+		   解决：同步锁（锁定类、锁定方法、锁定代码块）
+		   
+	扩展：单例设计模式（面试）
+五、	如何使用？
+	1、创建
+	2、Servlet中需要注意的知识：
+		·@WebServlet("/login") 路径的注解
+		·extends HttpServlet    继承HttpServlet
+		·doGet   doPost  中包含了request、response
+			需要输出response.getWriter()
+		·为什么要在post中调用get：HTTP的提交方式默认是get 
+	3、Servlet的配置
+		·注解（直接在类上面注解Servlet的路径）
+		·在web.xml中声明Servlet的路径
+	4、使用步骤
+		1.进行必要的头部信息处理（编码重置、禁止缓存）
+		2.接收V传递的参数
+		3.对参数进行必要的异常处理和判断
+		4.可能需要考虑调用值JavaBean对数据进行封装
+		5.初始化工具JavaBean（new、静态方法直接用类名调用）
+		6.得到M处理的返回结果
+		7.进行必要的信息保存  （选择合适的作用域）
+		8.根据需求，选择重定向或者是请求转发回到V
+		   
+		   
+		   

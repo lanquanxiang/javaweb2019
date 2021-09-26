@@ -1,0 +1,87 @@
+一、作用域
+	·做什么？（保存数据）
+	·HTTP是无状态的
+二、区别（级别不同）
+	page：页面本身
+	request：一次请求
+	session：一次会话（打开浏览器--关闭浏览器  访问服务--服务断开）
+	application：应用级（服务器级）（开启服务器 --- 服务器关闭）
+三、如何使用
+	CRUD增删改查
+	增加：P136
+		void setAttribute(String,Object); String--key   Object--value
+			·key不能重复，自定义（随便取名字）
+			·value保存任意数据类型
+	删除：P137
+		void removeAttribute(String);  String--key
+	修改：
+		setAttribute("age",18);setAttribute("age",20);
+		//key相同，值会被覆盖
+		【扩展】setAttribute("age","");
+	查询：P136
+		Object getAttribute(String); String---key
+		【提醒】都需要进行强制类型转换-->类型转换异常？？？
+四、session的补充知识【第5章 会话及会话技术】 通常用来保存用户的个人信息
+	为什么需要有会话技术？--- HTTP是无状态的
+	1、会员卡（不记名） 将信息保存在客户端
+		·cookie技术
+		·缺点：客户端可以清除cookie，占用客户端的空间
+	2、session（登记）将信息保存在服务器
+		·sessionID（基于cookie）
+	3、【重点】P150
+		1.获得session、获得application
+			获得session:request.getSession();※
+			获得application[P182]: P151   session.getServletContext()
+		2.退出、登出、注销（销毁了session中保存的登录状态）
+			session.invalidate()  使session无效（立即失效）
+			//只清除登录的数据，其他session中的数据不销毁
+			session.removeAttribute("key");
+			session.setAttribute("key","");
+			
+		3.超时退出、销毁
+			session.setMaxInactiveInterval(时间 秒) 设置session的存活时间
+		4.其他一些方法
+			getId()
+五、application--ServletContext
+	1、服务器级
+	2、所有用户共享
+	3、应用：网站访问量、日志、服务器配置信息
+
+六、没啥用
+	page相当于页面本身   this
+	pageContext 页面上下文：通过这个内置对象可以找到其他内置对象
+		但是EL表达式的时候需要使用	
+	config 配置
+	exception 异常
+		·并不是所有jsp页面都有这个内置对象
+		·只有当isErrorPage=true才存在	
+七、补充内置对象分类
+	1）	输入输出对象：request、response、out
+	2）	通信对象：session、application、pageContext
+	3）	servlet对象：page、config
+	4）	错误对象：exception
+			
+JavaBean  P200
+1.什么是JavaBean
+	·Java类
+	·重复使用的组件（可重用）
+2.分类
+	·值JavaBean ------  数据封装  POJO、实体entity
+	·工具JavaBean ----- 方法（处理数据）
+3.编写规范值JavaBean
+	·类名要首字母大写
+	·私有成员变量名首字母小写【注意】
+	·提供公有的构造方法（无参、有参）
+	·为私有成员变量提供get和set方法
+试一试：
+	1、创建一个User.java  值JavaBean
+		·包含用户名和密码
+	2、创建一个UserUtil.java   工具类JavaBean
+		·提供一个方法判断用户能否登录
+			假设密码是111111就可以登录
+	
+
+		
+	
+		
+		

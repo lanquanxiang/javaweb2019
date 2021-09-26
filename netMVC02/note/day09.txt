@@ -1,0 +1,53 @@
+过滤器Filter   P232
+1、什么是过滤器
+	·本质上是Java类  （*.java） 例如：CodingFilter
+	·实现了Filter接口   （implements）
+2、为什么要用过滤器（作用）
+	1.客户端发送的request要通过过滤器（处理request）【重点】
+	2.服务器响应的response要通过过滤器（处理response）
+	3.过滤器能够决定是否放行request（权限）
+3.补充知识
+	1.允许有多个过滤器，多个过滤器能够组成过滤链   P238
+	2.过滤器的生命周期
+		·构造方法
+		·初始化init
+		·doFilter(ServletRequest request,ServletResponse response, FilterChain chain)（核心方法，需要覆写的方法）
+		·销毁destroy
+	3.如何从上一个过滤器进入到下一个过滤器
+		FilterChain chain.doFilter(request,response);
+	4.组成过滤链的顺序？
+			1 System.out.println("TestFilter正在运行");     *.jsp
+			2 System.out.println("AllFilter正在运行");			/*		
+			3 System.out.println("CodingFilter正在运行");		/day06/*		
+			4 System.out.println("TedingFilter正在运行");		/day06/login.jsp
+		·如果是注解方式，过滤器按照【类名排序】组装
+		·如果是配置+注解方式，那么配置>注解
+		·如果是配置方式，按照web.xml的配置顺序进行执行		
+		
+	5.request先经过过滤器1--2---3---4
+		response先经过 4---3---2--1
+	6.初始化P240 config
+4.如何使用过滤器？
+	1.创建
+		·先创建class然后手动去实现Filter接口
+		·直接用IDE创建Filter
+	2.配置
+		·注解
+			@WebFilter("/过滤路径")    只有【访问的路径】与这个【过滤路径匹配】，才会执行这个过滤器
+		·配置文件web.xml
+			P234
+			<url-pattern>/过滤路径</url-pattern>
+		·路径怎么写？
+			1.过滤某种文件类型   *.jsp
+			2.过滤所有文件   /*
+			3.过滤指定文件夹下的所有路径   /文件夹的名字/*
+			4.过滤指定的文件  /day06/login.jsp	
+3、应用
+	1.黑白名单
+	2.禁止缓存（要求所有的动态网页都不能缓存  *.jsp）  验证码 
+	3.权限拦截（注意：拦截请求之后，要给响应）
+	4.处理全站编码（掌握）   /*
+	5.自动登录
+	
+	【强调】ServletRequest  和  HttpServletRequest 强制类型转换
+	

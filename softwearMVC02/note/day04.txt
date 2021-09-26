@@ -1,0 +1,58 @@
+JSP内置对象P182
+1、什么是内置对象
+	·已经创建好的对象，不需要开发者重复创建，直接使用即可 P174
+	·JSP提供了9个内置对象，大家需要记住这些内置对象的【类型】 P182
+2、内置对象（1234）
+	1个输出：out
+	2个HTTP：request、response
+	3个作用域：request、session、application    【page】作用域四个
+	4个没用的：page、pageContext、config、exception
+3、out内置对象   JspWriter类型
+	1.输出 out.print()
+	2.[掌握]P183
+		两级缓冲区  ---> JspWriter缓冲区 ---> response缓冲区 --->页面
+		【问题】页面显示内容和代码的输出顺序不一致。  P183 文件6-5  line8、9
+		【提醒】通过内置对象response来获得输出流，去输出内容
+4、请求和响应【重点重点】
+	request 类型 HttpServletRequest	P126			response 类型 HttpServletResponse P115
+	1.获得请求头信息 P127								1.设置响应头信息 P116
+		request.getContextPath()						·自动刷新 setHeader("Refresh","时间(秒)")    P123  line9
+		得到的永远是根路径									·自动跳转 setHeader("Refresh","时间(秒);URL=跳转的地址")  P122  line9
+														·禁止缓存
+														response.setHeader("Cache-Control","no-cache");禁止缓存
+														response.setHeader("Pragma","no-cache");禁止缓存此响应
+														response.setDateHeader("Expires", 0);	设置立即过期
+	2.设置请求参数的编码	P134							2.设置响应的内容编码P121
+		get方式：P136										·response.setContentType("MIME;charset=UTF-8");
+			·先检查页面编码
+			·重构字符串（乱码字符串->字节数组->新的字符串）
+		POST方式：P135 line9
+			setCharacterEncoding("UTF-8")
+	
+	3.[重要]获得请求参数 P132							3.获得输出流输出内容
+		·获得单一的参数值									response.getWriter();
+			getParameter("参数的名字")						response.setStatus(200);
+			【注意】如果出现空指针异常，要注意检查参数名称
+		·获得多个值（复选框）
+			String[] getParameterValues("参数的名字")
+			[注意]如果用此方法去获取单一值，得到的是长度为1的字符串数组
+														
+	4.请求转发	P137 									4.重定向 P124
+		request.getRequestDispatcher("URL")				response.sendRedirect("URL");	
+		    .forward(request, response);	
+		1.一次请求一次响应									1.多次请求多次响应
+		2.地址栏不会发生变化									2.地址栏要发生变化
+			【问题】如果响应页面中存在相对地址，可能会出错
+			【解决】将相对地址转换为绝对地址
+		3.携带参数request									3.不携带参数
+														【考虑】如果采用重定向，数据不能保存在request中
+		4.只能在服务器内部转发								4.URL可以是任意地址
+
+	5.读取客户端的cookie								5.可以向客户端写入cookie
+	
+	
+	
+	
+	
+											
+	
