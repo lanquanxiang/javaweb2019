@@ -1,0 +1,61 @@
+JDBC数据库连接
+1、jdbc是什么？
+	·一组类和库（接口）
+2、为什么要有jdbc？
+	·标准和规范（JDK）
+	·多态
+3、什么是jdbc驱动
+	·实际上就是jdbc接口的实现 类
+	·不同数据库有不同的驱动
+	·由数据库厂商、第三方开发
+4、导入驱动包
+5、常用的API  P262
+	1.Driver
+		MySQL路径：com.mysql.jdbc.Driver
+	2.DriverManager类 （创建连接）
+		·registerDriver注册驱动（×） 问题：造成驱动重复注册
+			【掌握】Class.forName("驱动类的全类名");(√)
+		·【掌握】static Connection getConnection(数据库地址,数据库用户名,数据库密码);
+			数据库地址格式P265：
+				一级协议:二级协议://服务器地址:端口号/数据库名称?参数
+					一级协议：jdbc
+					二级协议：mysql
+					服务器地址：本机127.0.0.1   localhost
+					端口号：mysql默认端口  3306
+					数据库名称：test
+					参数：编码  ?useUnicode=true&characterEncoding=UTF-8 
+					jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8
+				数据库用户名：root
+				数据库密码：123456		
+		
+	3.Connection连接  （创建操作数据库的命令对象）
+		·Statement createStatement() 创建静态的命令对象
+		·preparedStatement prepareStatement(String sql) 创建预编译命令对象
+			【注意】预编译命令对象的创建需要提供sql
+	4.Statement静态的命令对象（执行SQL）
+		·执行查询  executeQuery(String sql) 返回类型是结果集 ResultSet ---> 集合 List
+		·执行更新 executeUpdate(String sql) 返回类型int
+			int表示的是影响的条数：   0 ----> 没有任何影响（更新失败）
+			是否执行成功，int是否大于0
+	5.preparedStatement预编译的命令对象（执行SQL）
+		·执行查询  executeQuery() 返回类型是结果集 ResultSet ---> 集合 List
+		·执行更新 executeUpdate() 返回类型int
+		【特别注意】不需要再提供sql（如果写了参数，程序编译不会错，但是执行的时候会错误）
+		·和静态命令的区别 P263
+			1、preparedStatement是Statement子接口
+			2、可以使用?来代替参数        select * from stu where sno = "2001";
+								select * from stu where sno = ?;
+			3、优点：
+				1.可读性更高
+				2.易维护
+				3.安全性更高（防止SQL注入式攻击）
+				4.效率更高（SQL只编译一次，只需要修改参数）
+				
+				
+				
+				
+		
+		
+		
+		
+	
