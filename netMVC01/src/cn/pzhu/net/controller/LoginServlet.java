@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 		//get提交方式被执行
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//1.进行必要的头部信息处理（编码重置、禁止缓存）
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 				
 		//2.接收V传递的参数
 		String username = request.getParameter("username");
