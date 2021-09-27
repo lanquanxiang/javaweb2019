@@ -22,7 +22,7 @@ JSP内置对象P182
 														response.setHeader("Cache-Control","no-cache");禁止缓存
 														response.setHeader("Pragma","no-cache");禁止缓存此响应
 														response.setDateHeader("Expires", 0);	设置立即过期
-	2.设置请求参数的编码	P134							2.设置响应的内容编码P121
+	2.设置请求参数的编码	P134						2.设置响应的内容编码P121
 		get方式：P136										·response.setContentType("MIME;charset=UTF-8");
 			·先检查页面编码
 			·重构字符串（乱码字符串->字节数组->新的字符串）
@@ -46,7 +46,7 @@ JSP内置对象P182
 			【解决】将相对地址转换为绝对地址
 		3.携带参数request									3.不携带参数
 														【考虑】如果采用重定向，数据不能保存在request中
-		4.只能在服务器内部转发								4.URL可以是任意地址
+		4.只能在服务器内部转发									4.URL可以是任意地址
 
 	5.读取客户端的cookie								5.可以向客户端写入cookie
 	

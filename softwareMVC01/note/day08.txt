@@ -1,0 +1,65 @@
+过滤器Filter
+1、什么是过滤器
+	·本质上是Java类（src）
+	·实现了Filter接口（implements）
+2、过滤器的作用
+	·客户端的请求要通过过滤器（处理request）
+	·服务器的响应也要通过过滤器（处理response）
+	·决定目标资源是否能够被访问（是否允许通过）
+3、过滤链
+	·允许存在多个过滤器
+	·多个过滤器可以组成过滤链
+	·在过滤器中要选择是否放行（doFilter放行/重定向、请求转发）
+	问题：存在多个过滤器，他的顺序是如何确定？
+		试一试：
+			1 TestFilter  --->   *.jsp
+			2 ABCFilter   --->   /*
+			3 AAAFilter   --->   /day06/*
+			4 Test2Filter --->   /*
+			5 BBBFilter  ---->   /*
+			54321
+	执行顺序：
+		1、如果是注解方式，按照类名排序；
+		2、如果注解+ 配置，配置过滤器 > 注解过滤器
+		3、如果是配置方式，按照配置的顺序执行
+4、Filter的创建和配置
+	·生命周期
+		·构造constructor
+		·初始化init
+		·执行过滤doFilter(request,response)
+			注意：
+				1.Filter是不产生请求和响应
+				2.ServletRequest是HttpServletRequest的父类
+				3.在开发中，如果需要对http中的请求或者响应进行处理，需要进行强制类型转换
+					HttpServletRequest r = (HttpServletRequest)request;
+				4.chain.doFilter() 放行
+	·创建和配置
+		配置：
+			1、注解
+				@WebFilter("/过滤路径")
+			2、配置
+				<url-pattern></url-pattern>
+				1. /* 匹配所有文件
+				2. *.jsp 匹配某一类文件
+				3. /index.jsp 匹配具体的某一个文件
+				4. /文件夹/* 匹配某一个文件夹下的所有文件
+			
+5、应用
+	1、限制提交方式、限制IP地址
+	2、统一全站编码（/*）【掌握】
+	3、限制必须提交的参数
+	4、自动登录（扫描cookie保存的用户信息）	
+	5、获得作用域中数据（权限拦截）【掌握】
+	6、设置某类文件禁止缓存（*.jsp）
+	7、统一响应的编码格式
+
+6、实例（实验）	
+	1.统一全站编码
+	2.权限拦截				
+					
+					
+					
+					
+					
+					
+					

@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//2、进行一些必要的编码（中文乱码）和头部信息处理（禁止缓存）
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		//3、接受V视图层发过来的参数（单个值、还是多个值）
 		String u = request.getParameter("username");
 		String p = request.getParameter("password");

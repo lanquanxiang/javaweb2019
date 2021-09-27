@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>显示用户信息</title>
+
 </head>
 <body>
 <%=session.getAttribute("msg") %>
@@ -16,5 +17,6 @@
 	}
 
 %>
+<a href="<%=request.getContextPath()%>/logout">退出</a>
 </body>
 </html>
