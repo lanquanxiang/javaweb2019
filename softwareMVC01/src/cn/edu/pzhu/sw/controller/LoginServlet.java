@@ -13,7 +13,7 @@ import cn.edu.pzhu.sw.util.UserUtil;
 /**
  * Servlet implementation class LoginServlet
  */
-
+@WebServlet("/zhangsan")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -53,6 +53,9 @@ public class LoginServlet extends HttpServlet {
 		if(flag){
 			request.getSession().setAttribute("msg", "»¶Ó­"+u+",µÇÂ¼³É¹¦£¡");
 			request.getSession().setAttribute("hs", hs);
+			
+			//request.getRequestDispatcher(request.getContextPath()+"/day06/show.jsp").forward(request, response);
+			
 			response.sendRedirect(request.getContextPath()+"/day06/show.jsp");
 		
 		}else{
