@@ -64,7 +64,7 @@ JDBC数据库连接
 			2.取这一行第n列   P264    getXXX(列的索引    或者  列的名字)
 				columnIndex - the first column is 1, the second is 2, ... 
 			3.使用实体对象的set方法来保存
-			4.当实体所有属性都赋值之后添加到list集合中（add）
+			4.当实体所有属性都赋值之后添加到list集合中（add）     list.add(user);
 	7.关闭连接释放资源 P269
 		1.方法 close
 		2.资源：连接、命令对象、结果集（update没有）
