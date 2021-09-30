@@ -1,3 +1,4 @@
+<%@page import="cn.edu.pzhu.util.JDBCUtil"%>
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,13 +10,8 @@
 </head>
 <body>
 <%
-//1.注册驱动	
-	Class.forName("com.mysql.jdbc.Driver");
-//2.创建连接
-	String url = "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8";
-	String user = "root";
-	String password = "1234";
-	Connection connection = DriverManager.getConnection(url, user, password);
+
+	Connection connection = JDBCUtil.getConnection();
 	out.print(connection+"<br/>");
 //3.编写sql语句
 	String sql = "select * from user";
@@ -28,9 +24,7 @@
 		out.print(res.getString(1)+"|"+res.getString(2)+"<br/>");
 	}
 //7.释放资源	
-	res.close();
-	sta.close();
-	connection.close();
+	JDBCUtil.close(res, sta, connection);
 
 
 
