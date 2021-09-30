@@ -1,0 +1,57 @@
+过滤器P232
+1、什么是过滤器
+	·本质上是Java类（src下面创建）
+	·实现了Filter接口
+2、有什么作用
+	·在请求到达服务器之前对请求request进行处理
+	·在响应到达客户端之前对响应response进行处理
+	·决定目标资源是否能够被访问（请求是否放行）
+3、应用
+	1.根据需求对请求头的信息进行限制访问（禁止特定的IP地址访问、限制请求方式）
+	2.【掌握】统一网站的编码（防止乱码）
+	3.根据需求限定必须要提交的参数（SpringMVC通过对参数进行注解就能够实现）
+	4.读取cookie中的信息，实现自动填写用户信息、自动登录
+	5.【掌握】根据特定用户保存的信息决定是否放行（权限拦截 --->作用域中是否有登录标记）
+		例如：购物车
+	6.设置特定类型的文件不许允许缓存（response禁止缓存功能）
+	7.【掌握】对响应的内容类型进行编码设置（防止响应乱码）
+4、Filter 的使用
+	P232
+	·constructor装载（只执行一次）
+	·init初始化（filterConfig配置）（只执行一次）
+	·doFilter执行过滤（核心方法--->在这个方法里面处理request、response和决定是否放行）
+	·destroy销毁（只执行一次）
+5、doFilter核心方法
+	·doFilter(ServletRequest request,ServletResponse response,chain)
+		放行：chain.doFilter(request,response);
+		不放行：请求转发、重定向
+	·注意
+		·request、response不是JSP内置对象的请求和响应
+		·HttpServletRequest 是ServletRequest子类
+		·HttpServletResponse是ServletResponse子类
+		·强制类型转换
+6、创建Filter	
+	·Filter Mapping过滤路径
+		说明的是：只有当 【访问路径】  与  【过滤路径（集合）】相匹配才会执行
+				day06/user.jsp   /CodingFilter  过滤器不执行 
+				day06/user.jsp   /*             过滤器要执行
+	·过滤路径配置
+		1.注解方式@WebFilter("/过滤路径")
+		2.配置方式<url-pattern>/过滤路径</url-pattern>
+		3.过滤路径
+			/*   匹配所有路径
+			/admin/*  匹配admin文件夹下的所有内容
+			*.jsp  匹配所有的jsp文件
+			/index.jsp   匹配所指定的某一个文件（根路径下的index.jsp）
+			
+7、过滤链P238
+	·允许有多个过滤器
+	·多个过滤器可以组成过滤链（chain）
+	【问题】谁在前面？谁在后面？
+		1.如果注解方式，那么按照类名排序；
+		2.如果注解 + 配置方式，配置>注解;
+		3.如何都是配置方式，按照web.xml中的配置顺序来组装。			
+			
+			
+			
+			
