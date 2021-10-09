@@ -1,0 +1,91 @@
+JDBC  P262
+1、JDBC是什么？
+	·标准和规范
+	·一系列类和库（接口）
+2、JDBC驱动
+	·JDBC接口的实现
+	·数据库提供商
+3、IOP面向接口编程
+	·JDBC API （Java提供 java.sql.*）
+	·JDBC驱动（数据库厂商提供  C:/Alan）
+4、常用的API
+	1.Driver接口（驱动类） com.mysql.jdbc.Driver
+		ClassNotFound
+	2.DriverManager
+		·加载驱动
+			造成驱动重复注册  Class.forName("驱动类名")
+		·创建连接
+			Connection getConnection(url,user,password);
+			
+			url:数据库路径 P265
+				一级协议:二级协议://主机地址:端口号/数据库名称?参数=参数值&参数=参数值……
+				jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8
+			user:用户名   root
+			password:密码   1234
+	3.Connection 创建命令对象
+		·静态命令对象
+			Statement createStatement()
+		·预编译的命令对象
+			PreparedStatement  prepareStatement(sql)	
+	4.Statement和PreparedStatement区别【执行sql】
+		1、什么关系
+				Statement父类  	PreparedStatement子类
+		2、PreparedStatement优点（使用?来代替参数）
+			·已维护、可读性更高
+				"select * from stu where sex=? and age > ? and ...."
+			·更安全
+				防止SQL注入式攻击
+			·效率更高
+				SQL只编译一次，之后只需要更换参数即可
+		3、如何使用PreparedStatement
+			·使用?占位，代替参数
+			·为?赋值    setXXX(位置从1开始,值);   XXX表示类型
+		4、执行sql	
+			·执行更新 int executeUpdate
+				失败返回0 成功返回>1
+			·执行查询ResultSet executeQuery 
+				返回类型是结果集
+			【特别注意】
+				PreparedStatement的执行不需要参数
+	5.处理结果
+		1、结果是int 
+			只需要判断是否为0
+		2、结果是ResultSet
+			·循环来读取数据
+				while(res.next()){
+				}
+			·每循环一次读一行
+				1、getXXX(列索引) 从1开始   XXX类型
+				2、getXXX(字段名)
+		3、结果的返回
+			·如果只有一条数据
+				ResultSet --> 实体类的实例 user(name,password)
+			·如果是多条数据
+				ResultSet --> 实体类的实例的集合 List<User>
+	6.释放资源 close
+		1、释放的资源包括
+			结果集、命令对象（静态、预编译）、连接
+		2、释放的顺序
+			结果集 --> 命令对象 -->连接
+				如果不按这个顺序，在数据库连接池中，将造成资源浪费
+		
+5、开发步骤
+	1.注册驱动
+	2.创建连接
+	3.编写SQL语句
+	4.创建命令对象	
+	5.执行SQL语句
+	6.处理结果
+	7.释放资源		
+					
+			
+			
+			
+			
+			
+			
+			
+			
+			
+				
+			
