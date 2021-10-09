@@ -1,8 +1,7 @@
 package cn.edu.pzhu.controller;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -11,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.jni.User;
+import cn.edu.pzhu.entity.User;
+import cn.edu.pzhu.dao.imp.UserDAOImp;
+import cn.edu.pzhu.dao.inf.UserDAO;
 
 /**
  * Servlet implementation class ShowServlet
@@ -32,20 +33,11 @@ public class ShowServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		ResultSet res = null;
-//		if(res!=null){
-//			try {
-//				res.close();
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-	//	sta.close();
-	//	connection.close();
-	//	ArrayList<User> list = new ArrayList<>();
-	//	list.add(user);
+		
+		UserDAO dao = new UserDAOImp();
+		ArrayList<User> list = dao.selectAll();
+		request.getSession().setAttribute("list", list);
+		response.sendRedirect(request.getContextPath()+"/day13/show.jsp");
 		
 	}
 
