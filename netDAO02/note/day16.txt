@@ -1,0 +1,27 @@
+JDBCTemplate
+
+P293
+Object... 不定参数
+
+开发步骤
+1、导包
+2、初始化JDBCTemplate
+	·使用数据源来进行初始化
+		template =  new JdbcTemplate(DruidUtil.getDs());
+3、JDBCTemplate的使用
+	1.查询
+		1.只有一条数据（id查询）
+			template.queryForObject(sql,类的反射,sql语句中的参数【id】)
+		2.多条数据
+			template.query(sql,类的反射,sql语句中的参数【可能是多个】)
+	2.更新（insert/update/delete）
+		int n = template.update(sql,sql语句中的参数【可能是多个】)
+	
+	
+
+
+实验：汽车表进行增删改查
+
+
+反射
+	通过反射来得到User的属性列表，将查询到的数据表结果直接映射到User中

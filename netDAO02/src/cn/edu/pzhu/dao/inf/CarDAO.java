@@ -13,4 +13,7 @@ public interface CarDAO extends GeneralDAO<Car,Integer>{
 	 * @return
 	 */
 	public ArrayList<Car> selectByPrice(double start,double end);
+	
+	
+	//需要在这个地方增加模糊查询（关键词）
 }
