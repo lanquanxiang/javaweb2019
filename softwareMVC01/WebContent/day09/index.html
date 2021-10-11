@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>输入参数</title>
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<style>
+			.hide{
+				display: none;	
+			}
+		</style>
+	</head>
+	<body> 
+		<form method="get" action="calByFactory">
+			<div class="shape">
+				选择图形类型：
+				<input type="radio" value="circle" name="shape" checked="checked"/>circle
+				<input type="radio" value="rectangle" name="shape" />rectangle
+				<input type="radio" value="triangle" name="shape" />triangle<br>
+			</div>
+
+			<div class="nav">
+				<div>
+					请输入圆的半径:<input  type="text" name="param" /><br />
+				</div>
+				<div>
+					请输入矩形的宽度:<input type="text" name="param" /><br />
+					请输入矩形的高度:<input type="text" name="param" /><br />
+				</div>
+				<div>
+					请输入三角形的第一边:<input type="text" name="param" /><br />
+					请输入三角形的第二边:<input type="text" name="param" /><br />
+					请输入三角形的第三边:<input type="text" name="param" /><br />
+				</div>
+				<input type="submit" value="工厂模式计算" />
+				<input type="submit" value="策略模式计算" formaction="calByStrategy"/>
+			</div>
+		</form>
+		<script>
+			$().ready(function(){
+				fun(0);
+			});
+			$(".shape>input[type='radio']").click(function(){
+				fun($("input").index(this));				
+			});			
+			function fun(index){
+				$(".nav>div").addClass("hide");
+				$(".nav>div").eq(index).removeClass("hide");	
+				
+				$(".nav>div").children().attr("disabled","disabled");
+				$(".nav>div").eq(index).children().removeAttr("disabled","disabled");
+			}
+		</script>
+	</body>
+</html>
