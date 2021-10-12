@@ -1,0 +1,44 @@
+JDBCTemplate（Spring框架）
+	·封装了JDBC的操作
+	·简化代码量
+Spring提供JDBCTemplate来简化SQL的执行
+
+SQL语句分为：
+	1.查询语句
+		·最多一条数据（id查询）---> 一个实例 User user
+		·可能有多条（模糊查询、查询所有）--->实例的集合  List<User> list
+	2.更新语句
+		·int整型数据表示影响的条数
+
+JDBCTemplate
+	1.查询
+		select * from tablename where color=? and price<? and 
+		query(sql语句,结果集的映射,不定参数（不知道参数的个数）)
+		  eg.query(sql,..,"1","zhangsan","lisi")
+	2.更新
+		update(sql,不定参数)
+			不定参数：用来给sql中的问号赋值
+			
+		XXX.class Java反射：通过Java的反射机制得到类的属性
+		【注意】实体类的属性名要和数据表中的字段名一致	
+开发步骤
+	1、初始化工具类（需要使用数据库连接池）
+	2、编写sql语句
+	3、调用方法执行sql语句
+	4、返回结果
+	
+JDBCTemplate实践
+	1、初始化工具类（需要使用数据库连接池）
+	2、编写sql语句
+	3、调用方法执行sql语句
+	4、返回结果	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
