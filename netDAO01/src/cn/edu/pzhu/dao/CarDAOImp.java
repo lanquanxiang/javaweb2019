@@ -3,19 +3,34 @@ package cn.edu.pzhu.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import cn.edu.pzhu.entity.Car;
+import cn.edu.pzhu.util.DruidUtil;
 
 public class CarDAOImp implements CarDAO{
 
+	public JdbcTemplate template = new JdbcTemplate(DruidUtil.getDs());
+	
 	@Override
 	public boolean add(Car data) {
-		// TODO Auto-generated method stub
+		String sql = "insert into car values(?,?,?,?)";
+		int n = template.update(sql, data.getCar_id(),
+				data.getCar_name(),data.getCar_type(),data.getCar_price());
+		if (n>0) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean detele(Integer key) {
-		// TODO Auto-generated method stub
+		String sql = "delete from car where car_id=?";
+		int n = template.update(sql, key);
+		if (n>0) {
+			return true;
+		}
 		return false;
 	}
 
@@ -27,14 +42,19 @@ public class CarDAOImp implements CarDAO{
 
 	@Override
 	public Car selectById(Integer key) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from car where car_id=?";
+		try {
+			return template.queryForObject(sql, new BeanPropertyRowMapper<>(Car.class), key);
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 
 	@Override
 	public ArrayList<Car> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from car";
+		return (ArrayList<Car>) template.query(sql, new BeanPropertyRowMapper<>(Car.class));
 	}
 
 	@Override

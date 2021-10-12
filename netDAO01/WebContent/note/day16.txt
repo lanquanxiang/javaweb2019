@@ -29,8 +29,15 @@ JDBCTemplate
 	
 JDBCTemplate实践
 	1、初始化工具类（需要使用数据库连接池）
+		 JdbcTemplate template = new JdbcTemplate(DruidUtil.getDs());
 	2、编写sql语句
 	3、调用方法执行sql语句
+		·执行更新
+			int n = template.update(sql,不定参数);
+		·查询单个数据
+			template.queryForObject(sql, new BeanPropertyRowMapper<>(类名.class), 不定参数);
+		·查多个数据
+			template.query(sql, new BeanPropertyRowMapper<>(类名r.class))
 	4、返回结果	
 	
 	
