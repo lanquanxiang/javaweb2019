@@ -1,45 +1,43 @@
 package cn.edu.pzhu.util;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class JDBCUtil {
-	private static String driver= null;
-	private static String url= null;
-	private static String user= null;
-	private static String password= null;	
-	
-	//1.注册驱动
+import javax.sql.DataSource;
+
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+public class DruidUtil {
+	//空白数据源
+	public static DataSource ds = null;
+
+	public static DataSource getDs() {
+		return ds;
+	}
+	//初始化
 	static{
-		InputStream in = JDBCUtil.class.getClassLoader().getResourceAsStream("db.properties");
+		InputStream in = DruidUtil.class.getClassLoader().getResourceAsStream("druid.properties");
 		Properties properties = new Properties();
 		try {
+			//加载配置文件
 			properties.load(in);
-			driver = properties.getProperty("driver");
-			url = properties.getProperty("url");
-			user = properties.getProperty("user");
-			password = properties.getProperty("password");			
-			try {
-				Class.forName(driver);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			
-		} catch (IOException e) {
+			//初始化数据源
+			ds = DruidDataSourceFactory.createDataSource(properties);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}	
+		
+	}
+	
 	//2.获得连接
 	public static Connection getConnection(){
 		try {
-			return DriverManager.getConnection(url, user, password);
+			return ds.getConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -84,5 +82,6 @@ public class JDBCUtil {
 	public static void close(Connection con,PreparedStatement sta){
 		close(con, (Statement)sta, null);
 	}
+	
 	
 }
