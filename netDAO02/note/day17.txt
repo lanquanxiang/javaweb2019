@@ -1,0 +1,64 @@
+一、汽车信息的显示（完善）
+1、开发视图层
+	·创建超链接向控制层发起请求
+	·在视图层显示list（假设所有数据已经保存在session域）
+2、控制层开发
+	·创建Servlet来处理视图层请求
+	·调用service接口处理请求
+3、业务层开发
+	·初始化dao层
+	·调用dao层方法处理数据
+
+	
+二、EL表达式
+1、作用
+	简化开发
+2、语法
+	${表达式}
+3、应用
+	1、运算
+		·算术运算
+		·逻辑运算
+		·关系运算
+		·【掌握】三目运算
+		·【掌握】${empty 表达式} 返回结果是boolean
+			${empty username?"请登录":username}
+	2、数据显示
+		·${变量}
+		·${对象.属性}	  ${car.car_id}
+		·${数组[下标]}或${集合[下标]}
+		·${作用域对象中的数据} request、session、application
+			${sessionScope.list}  ==  session.getAttribute("list")
+		【注意】
+			如果没有限定作用域，那么会逐个扫描request-->session-->application
+		·${pageContext} 用来寻找其他的内置对象
+			例如：${pageContext.request} 应用：P214
+		·${cookie.名字.name}  【掌握】 ${cookie.名字.value}
+
+三、JSTL
+	JSP标准标签库
+	语法：<%@taglib uri="标签库地址" prefix="前缀">
+	1、核心库
+		<%@taglib uri="....../core" prefix="c">
+			·单分支语句<c:if test=""> 如果条件成立执行的代码 </c:if>
+			·多分支语句
+				<c:choose>
+					<c:when test=""> 如果条件成立执行的代码 </c:when>
+					<c:when test=""> 如果条件成立执行的代码 </c:when>
+					<c:otherwise> 如果条件成立执行的代码 </c:otherwise>
+				</c:choose>
+			·【掌握】<c:forEach>
+				1.items必须属性，表示迭代的集合
+				2.var表示临时变量的名字（自定义） 可能需要去读临时变量中更详细的信息
+				3.varStatus="x"表示迭代状态的名字
+					x.index 当前迭代的索引位置 从0开始
+					x.count	当前迭代的次数	从1开始
+	2、格式库
+	
+	3、使用
+		1.导包
+		2.在需要使用标签库的页面进行声明
+			<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+		3.用前缀来调用标签
+			
+	
