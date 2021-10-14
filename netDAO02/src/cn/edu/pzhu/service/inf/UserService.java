@@ -10,4 +10,6 @@ public interface UserService {
 	 * @return message里面包含了成功和失败的boolean数据，以及失败的原因
 	 */
 	public Message regist(User user);
+	
+	public Message login(User user);
 }

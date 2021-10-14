@@ -33,4 +33,20 @@ public class UserServiceImp implements UserService{
 		return new Message(false, "用户名注册失败!");
 	}
 
+	@Override
+	public Message login(User user) {
+		if (user==null) {
+			return new Message(false, "数据不合法!");
+		}
+		User user2 = dao.selectById(user.getName());
+		if (user2==null) {
+			return new Message(false, "用户不存在!");
+		}
+		if (user2.getPassword().equals(user.getPassword())) {
+			return new Message(true, "登录成功!");
+		}else{
+			return new Message(true, "密码错误!");
+		}
+	}
+
 }

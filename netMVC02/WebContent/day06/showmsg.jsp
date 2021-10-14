@@ -8,7 +8,8 @@
 <title>数据显示</title>
 </head>
 <body>
-	<%=	session.getAttribute("msg")	%>
+	<%--	session.getAttribute("msg")	--%>
+	${msg }
 	<%
 		if(session.getAttribute("flag")!=null && (boolean)session.getAttribute("flag")){
 			String[] aihaos = (String[])session.getAttribute("aihao");
