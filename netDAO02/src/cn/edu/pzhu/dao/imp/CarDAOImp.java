@@ -61,4 +61,11 @@ public class CarDAOImp implements CarDAO{
 		return null;
 	}
 
+	@Override
+	public ArrayList<Car> selectAll(int start, int length) {
+		String sql = "select * from car limit ?,?";
+		List<Car> list  = template.query(sql, new BeanPropertyRowMapper<Car>(Car.class),start,length);
+		return (ArrayList<Car>) list;
+	}
+
 }

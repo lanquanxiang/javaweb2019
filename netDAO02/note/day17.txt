@@ -23,6 +23,7 @@
 		·【掌握】三目运算
 		·【掌握】${empty 表达式} 返回结果是boolean
 			${empty username?"请登录":username}
+			否定 ${not empty 表达式}
 	2、数据显示
 		·${变量}
 		·${对象.属性}	  ${car.car_id}

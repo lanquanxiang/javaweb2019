@@ -16,4 +16,16 @@ public class CarServiceImp implements CarService{
 		return dao.selectAll();
 	}
 
+	@Override
+	public ArrayList<Car> showCar(int page, int num) {
+		if(page<=0){
+			page=1;
+		}
+		if (num<=0) {
+			num=10;
+		}
+		int start = (page-1)*num;
+		return dao.selectAll(start, num);
+	}
+
 }

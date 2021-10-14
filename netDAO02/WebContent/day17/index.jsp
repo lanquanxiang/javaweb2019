@@ -10,38 +10,29 @@
 <body>
 <a href="${pageContext.request.contextPath}/show">显示汽车信息</a>
 <hr/>
-<table>
-	<tr>
-		<th>序号</th>
-		<th>车名</th>
-		<th>型号</th>
-		<th>价格</th>
-	</tr>
-	<c:forEach items="${list}" var="car">
+<c:if test="${not empty list}">
+	<table>
 		<tr>
-			<td>${car.car_id}</td>
-			<td>${car.car_name}</td>
-			<td>${car.car_type}</td>
-			<td>${car.car_price}</td>
+			<th>序号</th>
+			<th>车名</th>
+			<th>型号</th>
+			<th>价格</th>
 		</tr>
-	</c:forEach>
-	
-	<%--
-
-	ArrayList<Car> list = (ArrayList<Car>)session.getAttribute("list");
-	if(list!=null && list.size()>0){
-		for(int i = 0;i<list.size();i++){
-			out.print("<tr>");
-			out.print("<td>"+list.get(i).getCar_id()+"</td>");
-			out.print("<td>"+list.get(i).getCar_name()+"</td>");
-			out.print("<td>"+list.get(i).getCar_type()+"</td>");
-			out.print("<td>"+list.get(i).getCar_price()+"</td>");
-			out.print("</tr>");
-		}
-	}
-	
---%>
-
-</table>
+		<c:forEach items="${list}" var="car">
+			<tr>
+				<td>${car.car_id}</td>
+				<td>${car.car_name}</td>
+				<td>${car.car_type}</td>
+				<td>${car.car_price}</td>
+			</tr>
+		</c:forEach>
+		<tr>
+			<td colspan="4">${bar}</td>
+		</tr>
+	</table>
+</c:if>
+<c:if test="${empty list}">
+	请点击上方的超链接，获得数据之后再继续操作。
+</c:if>
 </body>
 </html>

@@ -38,6 +38,12 @@ public class UserServiceImp implements UserService{
 		if (user==null) {
 			return new Message(false, "数据不合法!");
 		}
+		if (user.getName()==null || "".equals(user.getName())) {
+			return new Message(false, "用户名不能为空!");
+		}
+		if (user.getPassword()==null || "".equals(user.getPassword())) {
+			return new Message(false, "密码不能为空!");
+		}
 		User user2 = dao.selectById(user.getName());
 		if (user2==null) {
 			return new Message(false, "用户不存在!");
@@ -45,7 +51,7 @@ public class UserServiceImp implements UserService{
 		if (user2.getPassword().equals(user.getPassword())) {
 			return new Message(true, "登录成功!");
 		}else{
-			return new Message(true, "密码错误!");
+			return new Message(false, "密码错误!");
 		}
 	}
 
