@@ -24,6 +24,7 @@
 				<td>${car.car_name}</td>
 				<td>${car.car_type}</td>
 				<td>${car.car_price}</td>
+				<td><a href="edit.jsp?id=${car.car_id}">编辑</a></td>
 			</tr>
 		</c:forEach>
 		<tr>

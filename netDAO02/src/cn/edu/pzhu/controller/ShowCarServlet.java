@@ -60,7 +60,7 @@ public class ShowCarServlet extends HttpServlet {
 		//2.根据需求分割list
 		list = PagesUtil.splitList(list,page,num);
 		request.getSession().setAttribute("list", list);
-		response.sendRedirect(request.getContextPath()+ "/day17/index.jsp");
+		response.sendRedirect(request.getContextPath()+ "/index.jsp");
 	}
 
 	/**
