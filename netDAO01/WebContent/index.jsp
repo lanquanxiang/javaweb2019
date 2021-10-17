@@ -27,6 +27,17 @@
 				</td>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td colspan="4">${bar}</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<form action="${pageContext.request.contextPath}/show">
+					每页显示<input type="text" name="num" value="${empty num?10:num}">条
+					<input type="submit" value="确定">
+				</form>
+			</td>
+		</tr>
 	</table>
 </c:if>
 <c:if test="${empty list }">

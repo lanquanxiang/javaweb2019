@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import cn.edu.pzhu.entity.Message;
 import cn.edu.pzhu.entity.User;
 import cn.edu.pzhu.service.imp.UserServiceImp;
@@ -34,6 +36,17 @@ public class RegistServlet extends HttpServlet {
 		//实例化业务层接口
 		UserService us = new UserServiceImp();
 		//获取表单提交的数据
+		String checkcode = request.getParameter("checkcode");
+		String key = (String) request.getSession().getAttribute("key");
+		if (checkcode==null ||"".equals(checkcode) || !checkcode.equals(key) ) {
+			response.getWriter().print("<script>alert('验证码错误!');"
+					+ "window.location.href='"+request.getContextPath()+"/regist.jsp"
+					+"'</script>");
+			return;			
+		}
+		
+		
+		
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		//构造实体类 User
@@ -42,11 +55,13 @@ public class RegistServlet extends HttpServlet {
 		Message msg = us.regist(user);
 		//根据不同的结果保存信息，并跳转
 		if (msg.isRes()) {
-			request.getSession().setAttribute("msg", msg.getMsg());
-			response.sendRedirect(request.getContextPath()+"/day14/index.jsp");
+			response.getWriter().print("<script>alert('"+msg.getMsg()+"');"
+					+ "window.location.href='"+request.getContextPath()+"/login.jsp"
+					+"'</script>");
 		} else {
-			request.getSession().setAttribute("msg", msg.getMsg());
-			response.sendRedirect(request.getContextPath()+"/day14/index.jsp");
+			response.getWriter().print("<script>alert('"+msg.getMsg()+"');"
+					+ "window.location.href='"+request.getContextPath()+"/regist.jsp"
+					+"'</script>");
 		}
 	}
 

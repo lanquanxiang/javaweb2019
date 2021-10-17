@@ -12,4 +12,6 @@ public interface UserService {
 	public Message regist(User user);
 	
 	public Message login(User user);
+	
+	public String check(String name);
 }

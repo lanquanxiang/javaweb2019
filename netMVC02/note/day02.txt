@@ -15,6 +15,10 @@
 			·4个框 text password radio CheckBox
 			·4个按钮 submit reset button image（submit）
 			·2个域 文件域 file  隐藏域hidden【重点】
+			
+			如果表单中要上传文件,必须要增加表单编码类型
+				<form action="" method="" enctype="multipart/form-adata">
+				</form>
 		注意隐藏域的使用：
 		·表现形式：网页上有这个控件，但是用户看不见
 		·应用：

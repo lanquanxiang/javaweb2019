@@ -55,4 +55,15 @@ public class UserServiceImp implements UserService{
 		}
 	}
 
+	@Override
+	public String check(String name) {
+		if (name==null || "".equals(name)) {
+			return "用户名不合法!";
+		}
+		if(dao.selectById(name)==null){
+			return "用户名可用!";
+		}
+		return "用户名已经被占用!";
+	}
+
 }
