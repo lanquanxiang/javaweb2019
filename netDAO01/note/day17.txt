@@ -30,4 +30,27 @@ EL表达式
 		·显示cookie（key-value）中保存的信息
 			${cookie.key.name} == key
 			${cookie.key.value}
+JSTL
+1、概念
+	JSP标准标签库（5个功能库组成）
+2、组成
+	核心库、格式库
+3、使用
+	1.导包
+	2.在JSP页面声明
+	3.核心库
+		·<c:if>
+		·<c:choose>
+		·<c:forEach>
+			1.items
+			2.var=name   
+			3.varStatus=name
+				name.index 索引从0开始
+				name.count 计数从1开始
+				
 	
+	
+	
+	
+	
+		
