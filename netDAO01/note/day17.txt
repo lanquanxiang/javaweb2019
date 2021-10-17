@@ -1,0 +1,33 @@
+EL表达式
+1、概述
+	·简化开发
+	·将Java代码从JSP页面中删除，便于维护
+	·用法 ${表达式}
+2、应用
+	1.运算
+		·算术运算 ${1+1}
+		·关系运算${10>2}
+		·逻辑运算
+		·【重要】条件运算
+			${empty 表达式}  否定   ${not empty 表达式}
+			三目运算
+	2.显示数据
+		·显示变量
+		·显示域对象中的值
+			${xxxScope.key}
+				可以不限定域对象：page-->request-->session-->application
+		·显示对象中的属性
+			${对象.属性}
+				提醒：这个属性必须存在于对象中，且必须有get方法
+				注意：属性在类中，必须首字母小写
+		·显示数组的元素
+			${x[index]}
+		·显示集合中的元素
+			${list[index]}	 ${list[index].car_id}	
+		·显示EL内置对象
+			${pageContext.request} 得到request对象
+				重要应用：${pageContext.request.contextPath}
+		·显示cookie（key-value）中保存的信息
+			${cookie.key.name} == key
+			${cookie.key.value}
+	
