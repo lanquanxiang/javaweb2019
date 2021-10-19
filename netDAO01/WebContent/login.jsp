@@ -9,8 +9,9 @@
 <body>
 ${msg}
 <form action="<%=request.getContextPath()%>/login" method="post">
-	name:<input type="text" name="username">
-	password:<input type="password" name="password">
+	name:<input type="text" name="username" value="${cookie.username.value }">
+	password:<input type="password" name="password" value="${cookie.password.value }"><br/>
+	<input type="checkbox" value="isSave" name="save">保存用户名和密码
 	<input type="submit" value="登录">
 </form>
 </body>

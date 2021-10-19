@@ -12,4 +12,7 @@ public interface UserService {
 	//修改密码
 	
 	//销毁账户
+	
+	//检测用户名是否被占用
+	public String check(String name);
 }

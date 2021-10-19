@@ -31,8 +31,18 @@ public class RegistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
+		
+		String code = request.getParameter("checkcode");
+		String key = (String) request.getSession().getAttribute("key");
+		if (code==null || "".equals(code) || !code.equals(key)) {
+			response.getWriter().print("<script>alert('验证码错误！');window.location.href='"+request.getContextPath()+"/regist.jsp"+"'</script>");
+			return;
+		}
+		
 		User user = new User(name, password);
 		//接口只能用他的实现类来初始化
 		UserService us = new UserServiceImp();
@@ -41,11 +51,10 @@ public class RegistServlet extends HttpServlet {
 			//成功
 			request.getSession().setAttribute("msg", message.getMsg());
 			//如果成功就跳转到登录界面
-			response.sendRedirect(request.getContextPath()+"/day14/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
 		} else {
 			//失败
-			request.getSession().setAttribute("msg", message.getMsg());
-			response.sendRedirect(request.getContextPath()+"/day14/index.jsp");
+			response.getWriter().print("<script>alert('"+message.getMsg()+"');window.location.href='"+request.getContextPath()+"/regist.jsp"+"'</script>");
 		}
 	}
 

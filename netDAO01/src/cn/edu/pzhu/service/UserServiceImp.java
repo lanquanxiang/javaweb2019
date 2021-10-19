@@ -6,7 +6,7 @@ import cn.edu.pzhu.entity.Message;
 import cn.edu.pzhu.entity.User;
 
 public class UserServiceImp implements UserService {
-
+	UserDAO dao = new UserDAOImp();
 	@Override
 	public Message regist(User user) {
 		if (user==null) {
@@ -18,7 +18,6 @@ public class UserServiceImp implements UserService {
 		if (user.getPassword()==null || "".equals(user.getPassword())) {
 			return new Message(false, "密码为空!");
 		}
-		UserDAO dao = new UserDAOImp();
 		if (dao.selectById(user.getName())!=null) {
 			return new Message(false, "用户名被占用!");
 		}
@@ -39,7 +38,7 @@ public class UserServiceImp implements UserService {
 		if (user.getPassword()==null || "".equals(user.getPassword())) {
 			return new Message(false, "密码为空!");
 		}
-		UserDAO dao = new UserDAOImp();
+		
 		User dbUser = dao.selectById(user.getName());
 		if (dbUser==null) {
 			return new Message(false, "用户不存在!");
@@ -48,6 +47,18 @@ public class UserServiceImp implements UserService {
 			return new Message(true, "登录成功!");
 		}
 		return new Message(false, "密码错误!");
+	}
+
+	@Override
+	public String check(String name) {
+		if (name==null || name.equals("")) {
+			return "用户名不合法!";
+		}
+		if (dao.selectById(name)==null) {
+			return "用户名可用!";
+		}else{
+			return "用户名已经被占用!";
+		}
 	}
 
 }

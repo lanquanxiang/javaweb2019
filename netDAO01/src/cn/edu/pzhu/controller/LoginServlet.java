@@ -3,6 +3,7 @@ package cn.edu.pzhu.controller;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +34,9 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
+		
+		String save = request.getParameter("save");
+		
 		User user = new User(name, password);
 		//接口只能用他的实现类来初始化
 		UserService us = new UserServiceImp();
@@ -41,6 +45,21 @@ public class LoginServlet extends HttpServlet {
 			//成功
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("msg", message.getMsg());
+			
+			if (save!=null && "isSave".equals(save)) {
+				Cookie cookie1 = new Cookie("username", name);
+				Cookie cookie2 = new Cookie("password", password);
+				response.addCookie(cookie1);
+				response.addCookie(cookie2);
+			}else{
+				Cookie cookie1 = new Cookie("username", "");
+				Cookie cookie2 = new Cookie("password", "");
+				response.addCookie(cookie1);
+				response.addCookie(cookie2);
+			}
+			
+			
+			
 			//如果成功就跳转到登录界面
 			response.sendRedirect(request.getContextPath()+"/index.jsp");
 		} else {
