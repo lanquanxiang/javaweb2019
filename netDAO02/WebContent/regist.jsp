@@ -13,7 +13,10 @@ function fun() {
 		return;
 	}else{
 		$.get("${pageContext.request.contextPath }/check",
-			{name:$("#name").val()},
+			{
+				name:$("#name").val(),
+				time:new Date().getTime()
+			},			
 			function(data){
 				$("span").html(data);
 			}

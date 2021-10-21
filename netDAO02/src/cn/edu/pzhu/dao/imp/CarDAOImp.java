@@ -44,15 +44,22 @@ public class CarDAOImp implements CarDAO{
 	@Override
 	public Car selectById(Integer key) {
 		String sql = "select * from car where car_id=?";
-		Car car = template.queryForObject(sql,new BeanPropertyRowMapper<Car>(Car.class),key);
-		return car;
+		try {
+			return template.queryForObject(sql,new BeanPropertyRowMapper<Car>(Car.class),key);
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 
 	@Override
 	public ArrayList<Car> selectAll() {
 		String sql = "select * from car";
-		List<Car> list  = template.query(sql, new BeanPropertyRowMapper<Car>(Car.class));
-		return (ArrayList<Car>) list;
+		try {
+			return (ArrayList<Car>) template.query(sql, new BeanPropertyRowMapper<Car>(Car.class));
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override

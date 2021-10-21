@@ -5,11 +5,11 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import cn.edu.pzhu.entity.Message;
 import cn.edu.pzhu.entity.User;
@@ -43,6 +43,24 @@ public class LoginServlet extends HttpServlet {
 		//根据不同的结果保存信息，并跳转
 		PrintWriter out = response.getWriter();
 		if (msg.isRes()) {
+			//登录成功并且需要保存信息
+			String save = request.getParameter("save");
+			if (save!=null && "save".equals(save)) {
+				//保存cookie
+				Cookie cookie1 = new Cookie("username", name);
+				Cookie cookie2 = new Cookie("password", password);
+				response.addCookie(cookie1);
+				response.addCookie(cookie2);
+			}else{
+				//清除之前可能保存的cookie
+				Cookie cookie1 = new Cookie("username", "");
+				Cookie cookie2 = new Cookie("password", "");
+				//cookie1.setMaxAge(0);
+				response.addCookie(cookie1);
+				response.addCookie(cookie2);
+			}
+			
+			
 			out.print("<script>alert('"+msg.getMsg()+"');"
 					+ "window.location.href='"+request.getContextPath()+"/index.jsp"+"'</script>");
 			//request.getSession().setAttribute("msg", msg.getMsg());

@@ -17,8 +17,8 @@ function fun() {
 		$("span").html("用户名不能为空!");
 		return;
 	}else{
-		$.get("${pageContext.request.contextPath}/check?time=11",
-				{username:$(":text").val()},
+		$.get("${pageContext.request.contextPath}/check",
+				{username:$(":text").val(),time:new Date().getTime()},
 				function(data) {
 					$("span").html(data);
 				})
