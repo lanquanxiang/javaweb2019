@@ -4,16 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>个人中心</title>
+<title>注册</title>
+
 </head>
 <body>
-欢迎${user.name},${msg }.<br/>
-你可以使用以下功能：
-<ul>
-	<li>修改密码</li>
-	<li>销毁账户</li>
-	<li>退出登录</li>
-</ul>
-
+<form action="<%=request.getContextPath() %>/regist" method="post">
+	name:<input type="text" name="name">
+	password:<input type="text" name="password">
+	<input type="submit" value="注册">
+</form>
 </body>
 </html>

@@ -33,4 +33,36 @@ public class UserServiceImp implements UserService{
 		
 	}
 
+	@Override
+	public Message regist(User user) {
+		if (user==null) {
+			return new Message(false, "数据不合法!");
+		}
+		if (user.getName()==null || "".equals(user.getName())) {
+			return new Message(false, "用户名为空!");
+		}
+		if (user.getPassword()==null || "".equals(user.getPassword())) {
+			return new Message(false, "密码为空!");
+		}
+		if (dao.select(user.getName())!=null) {
+			return new Message(false, "用户名已经被占用!");
+		}
+		if (dao.add(user)) {
+			return new Message(true, "账号注册成功!");
+		}
+		return new Message(false, "账号注册失败!");
+	}
+
+	@Override
+	public Message changePwd(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean destroy(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -15,14 +15,14 @@ import cn.edu.pzhu.service.imp.UserServiceImp;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/regist")
+public class RegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public RegistServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,15 +38,13 @@ public class LoginServlet extends HttpServlet {
 		//初始化业务层接口
 		UserService us = new UserServiceImp();
 		//调用业务层接口方法来的到执行结果
-		Message message = us.login(user);
+		Message message = us.regist(user);
 		if (message.isSuccess()) {
-			request.getSession().setAttribute("user", user);
-			request.getSession().setAttribute("msg", message.getMsg());
-			response.getWriter().print("<script>alert('"+message.getMsg()+"');"
-					+ "window.location.href='"+request.getContextPath()+"/success.jsp"+"'</script>");
-		} else {
 			response.getWriter().print("<script>alert('"+message.getMsg()+"');"
 					+ "window.location.href='"+request.getContextPath()+"/login.jsp"+"'</script>");
+		} else {
+			response.getWriter().print("<script>alert('"+message.getMsg()+"');"
+					+ "window.location.href='"+request.getContextPath()+"/regist.jsp"+"'</script>");
 		}
 	}
 

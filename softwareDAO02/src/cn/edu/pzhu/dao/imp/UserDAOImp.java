@@ -31,7 +31,6 @@ public class UserDAOImp implements UserDAO{
 		}finally {
 			JDBCUtil.close(con, psta);
 		}
-		
 		return flag;
 	}
 
