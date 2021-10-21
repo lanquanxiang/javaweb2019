@@ -12,6 +12,7 @@ import cn.edu.pzhu.entity.Message;
 import cn.edu.pzhu.entity.User;
 import cn.edu.pzhu.service.imp.UserServiceImp;
 import cn.edu.pzhu.service.inf.UserService;
+import cn.edu.pzhu.util.Conver2MD5;
 
 /**
  * Servlet implementation class RegistServlet
@@ -44,10 +45,10 @@ public class RegistServlet extends HttpServlet {
 			return;			
 		}
 		
-		
-		
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
+		//对密码进行加密
+		password = Conver2MD5.getMD5(Conver2MD5.getMD5(password)+"pzhu");
 		//构造实体类 User
 		User user = new User(name,password);
 		//调用业务层接口实现注册，得到结果

@@ -15,6 +15,7 @@ import cn.edu.pzhu.entity.Message;
 import cn.edu.pzhu.entity.User;
 import cn.edu.pzhu.service.imp.UserServiceImp;
 import cn.edu.pzhu.service.inf.UserService;
+import cn.edu.pzhu.util.Conver2MD5;
 
 /**
  * Servlet implementation class LoginServlet
@@ -38,6 +39,8 @@ public class LoginServlet extends HttpServlet {
 		UserService us = new UserServiceImp();
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
+		//按照相同的规则对密码进行加密
+		password = Conver2MD5.getMD5(Conver2MD5.getMD5(password)+"pzhu");
 		User user = new User(name,password);
 		Message msg = us.login(user);
 		//根据不同的结果保存信息，并跳转
