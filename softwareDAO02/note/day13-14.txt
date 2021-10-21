@@ -1,0 +1,12 @@
+1、用户注册
+	select * from user where name=? and password=?
+	SQL注入式攻击：
+		使用SQL的特殊字符将原有的SQL语句进行篡改
+
+测试：
+	单元测试
+	1.增加测试的jar包  JUnit4.0
+	2.生成测试用例
+	3.执行单元测试 run as junit test
+	
+2、Car的查询（结构）

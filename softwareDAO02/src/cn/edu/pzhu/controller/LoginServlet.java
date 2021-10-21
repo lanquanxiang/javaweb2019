@@ -41,10 +41,10 @@ public class LoginServlet extends HttpServlet {
 		if (message.isSuccess()) {
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("msg", message.getMsg());
-			response.sendRedirect(request.getContextPath()+"/day12/success.jsp");
+			response.sendRedirect(request.getContextPath()+"/success.jsp");
 		} else {
 			request.getSession().setAttribute("msg", message.getMsg());
-			response.sendRedirect(request.getContextPath()+"/day12/login.jsp");
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
 		}
 	}
 

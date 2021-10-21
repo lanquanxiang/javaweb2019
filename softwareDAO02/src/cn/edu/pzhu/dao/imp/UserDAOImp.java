@@ -13,8 +13,26 @@ public class UserDAOImp implements UserDAO{
 
 	@Override
 	public boolean add(User data) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean flag = false;
+		Connection con = JDBCUtil.getConnection();
+		String sql = "insert into user values(?,?)";
+		PreparedStatement psta = null;
+		try {
+			psta = con.prepareStatement(sql);
+			//Ϊ�ʺŸ�ֵ
+			psta.setString(1, data.getName());
+			psta.setString(2, data.getPassword());
+			int n = psta.executeUpdate();
+			if (n>0) {
+				flag =true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(con, psta);
+		}
+		
+		return flag;
 	}
 
 	@Override
@@ -36,6 +54,7 @@ public class UserDAOImp implements UserDAO{
 		ResultSet res = null;
 		User user = null;
 		try {
+			
 			String sql="select * from user where name=?";
 			psta = connection.prepareStatement(sql);
 			psta.setString(1, key);
