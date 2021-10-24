@@ -12,6 +12,7 @@ import cn.edu.pzhu.entity.Message;
 import cn.edu.pzhu.entity.User;
 import cn.edu.pzhu.service.UserService;
 import cn.edu.pzhu.service.UserServiceImp;
+import cn.edu.pzhu.util.Conver2MD5;
 
 /**
  * Servlet implementation class RegistServlet
@@ -34,6 +35,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
+		
+		password = Conver2MD5.getMD5("haha"+Conver2MD5.getMD5(password)+"%@!");
 		
 		String save = request.getParameter("save");
 		

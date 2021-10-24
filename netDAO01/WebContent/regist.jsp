@@ -18,7 +18,10 @@ function fun() {
 		return;
 	}else{
 		$.get("${pageContext.request.contextPath}/check",
-				{username:$(":text").val(),time:new Date().getTime()},
+				{
+					username:$(":text").val(),
+					time:new Date().getTime()},
+				}
 				function(data) {
 					$("span").html(data);
 				})
