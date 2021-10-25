@@ -13,4 +13,5 @@ public interface UserService {
 	//查询用户名是否可用
 	public String check(String name);
 	//注销账号
+	
 }

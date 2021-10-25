@@ -15,14 +15,14 @@ import cn.edu.pzhu.service.UserServiceImp;
 /**
  * Servlet implementation class RegistServlet
  */
-@WebServlet("/regist")
-public class RegistServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistServlet() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,15 +37,17 @@ public class RegistServlet extends HttpServlet {
 		User user = new User(name, password);
 		//使用业务层接口的实现类来new一个业务层接口
 		UserService us = new UserServiceImp();
-		Message message =us.regist(user);
+		Message message =us.login(user);
 		if (message.isSuccess()) {
+			//成功，保存用户的登录信息
+			request.getSession().setAttribute("user", user);
 			//成功，保存msg中的消息
 			request.getSession().setAttribute("msg",message.getMsg());
-			response.sendRedirect(request.getContextPath()+"/login.jsp");
+			response.sendRedirect(request.getContextPath()+"/success.jsp");
 		}else{
 			//失败，保存msg中的消息
 			request.getSession().setAttribute("msg",message.getMsg());
-			response.sendRedirect(request.getContextPath()+"/regist.jsp");
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
 		}
 		
 	}
