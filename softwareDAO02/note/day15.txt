@@ -1,0 +1,22 @@
+数据库连接池
+1、为什么需要数据库连接池
+	·减少数据库连接的频繁创建和销毁
+	·提高数据库效率
+2、数据库连接池的原理
+	·使用集合List<Connection>保存一定数量的连接
+	·当需要连接的时候，从集合中获取一个， list.remove()
+	·当使用完毕之后，将连接加入集合中，list.add()
+3、DataSource
+	·javax.sql.*
+	·获得连接的方法 getConnection()
+	·DataSource ds = new 实现类();
+4、第三方数据库连接池
+	1、DBCP
+		·导入jar包
+		·创建空白数据源（接口）private static DataSource ds = null;
+			只创建一次（单例设计模式）
+		·需要使用第三方实现类来对数据源进行初始化
+			P289 line21
+	2、C3P0数据源
+		·导包c3p0-0.9.5.2.jar   mchange-commons-java-0.2.12.jar
+		·在src下面创建配置文件

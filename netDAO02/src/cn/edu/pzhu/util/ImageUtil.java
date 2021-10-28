@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.UnsupportedEncodingException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class ImageUtil {
@@ -47,7 +48,7 @@ public class ImageUtil {
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Times new Roman", Font.BOLD, 20));
 		char[] eles="23456789qwertyupkjhgfdsazxcvbnm".toCharArray();
-		Random random = new Random();
+		SecureRandom random = new SecureRandom();
 		String code="";
 		for (int i = 0; i < n; i++) {
 			int index = random.nextInt(eles.length);
@@ -71,8 +72,9 @@ public class ImageUtil {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, width, height);
 		g.setColor(Color.BLACK);
-		g.setFont(new Font("ËÎÌו", Font.BOLD, 16));		
-		Random random = new Random();
+		g.setFont(new Font("ËÎÌו", Font.BOLD, 16));	
+		//Random random = new Random();
+		SecureRandom random = new SecureRandom();
 		String code="";
 		byte[] bytes = new byte[2];
 		for (int i = 0; i < n; i++) {
