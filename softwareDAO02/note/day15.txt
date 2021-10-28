@@ -20,3 +20,10 @@
 	2、C3P0数据源
 		·导包c3p0-0.9.5.2.jar   mchange-commons-java-0.2.12.jar
 		·在src下面创建配置文件
+		·初始化数据源new ComboPooledDataSource();
+	3、Druid数据源 （阿里巴巴）
+		·导包druid-1.0.9
+		·在src下面创建配置文件
+		·初始化DruidDataSourceFactory.createDataSource(pro);
+				
+		
