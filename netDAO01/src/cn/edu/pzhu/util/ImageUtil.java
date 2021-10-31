@@ -41,7 +41,7 @@ public class ImageUtil {
 		SecureRandom random = new SecureRandom();
 		char[] eles = "23456789qwertyupkjhgfdsazxcvbnmMNBVCXZASDFGHJKPUYTREWQ".toCharArray();
 		String key="";
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < n && i>=0; i++) {
 			key+= eles[random.nextInt(eles.length)];
 		}		
 		g.drawString(key, width/8, height*3/4);
