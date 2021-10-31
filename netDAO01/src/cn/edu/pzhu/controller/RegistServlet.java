@@ -37,7 +37,7 @@ public class RegistServlet extends HttpServlet {
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		password = Conver2MD5.getMD5("haha"+Conver2MD5.getMD5(password)+"%@!");
+		password = Conver2MD5.getSHA256("haha"+Conver2MD5.getSHA256(password)+"%@!");
 		
 		String code = request.getParameter("checkcode");
 		String key = (String) request.getSession().getAttribute("key");

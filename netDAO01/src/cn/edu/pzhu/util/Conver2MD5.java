@@ -5,6 +5,19 @@ import java.security.NoSuchAlgorithmException;
 
 public final class Conver2MD5 {
 
+	public static String getSHA256(String str) {
+        String reStr = null;
+        try {
+        	MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(str.getBytes());
+            byte ss[] = md.digest();
+            reStr = bytes2String(ss);
+        } catch (NoSuchAlgorithmException e) {
+        	e.printStackTrace();
+        }
+        return reStr;
+    }
+	
 	public static String getMD5(String str) {
         String reStr = null;
         try {

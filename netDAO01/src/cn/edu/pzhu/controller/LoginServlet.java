@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		password = Conver2MD5.getMD5("haha"+Conver2MD5.getMD5(password)+"%@!");
+		password = Conver2MD5.getSHA256("haha"+Conver2MD5.getSHA256(password)+"%@!");
 		
 		String save = request.getParameter("save");
 		
