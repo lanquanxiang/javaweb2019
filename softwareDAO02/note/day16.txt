@@ -1,0 +1,98 @@
+JDBC操作优化
+1、更新
+	int n = update(sql,不定参数);
+		不定参数：为sql中的问号赋值
+2、查询
+	query(sql,类的反射,不定参数)
+	1、单个值
+	
+	2、多个值
+	
+3、步骤
+	1、初始化JDBC操作对象 （JDBCTemplate） Spring
+		·需要提供连接池
+		·放在方法外面初始化
+	2、编写SQL语句
+	3、调用update/query方法
+	4、处理结果
+	5、释放资源
+	
+JDBCTemplate
+1、导包
+2、初始化JDBCTemplate
+	new JdbcTemplate(DruidUtil.getDataSource());
+3、编写sql语句
+4、执行
+	1、update返回int n
+		template.update(sql,不定参数);
+	2、查询单个值
+		template.queryForObject(sql, Rowmapper<T>(类的反射),不定参数);
+			new BeanPropertyRowMapper<Car>(Car.class)  --->Rowmapper的实现
+		[特别提醒]
+			Spring提供查询，必须要有返回值，否则会报错。
+	3、查询多个值
+		template.query(sql, Rowmapper<T>(类的反射),不定参数);
+5、处理结果
+
+	if (n>0) {
+			return true;
+		}
+	return false;
+	
+	
+实例：显示汽车信息
+1、视图层
+2、控制层
+
+EL/JSTL
+1、语法
+	${表达式}
+2、应用
+	1、运算
+		逻辑运算、算术运算、关系运算、条件运算
+		${empty 表达式} 判断表达式是否为""或者null
+		${empty x}	 ""  true false 编译错误	
+		getAttribute("x") ---> null	
+		否定形式：
+		${not empty x?"":""}
+	2、读取域对象中的值【掌握】
+		session.getAttribute("x")
+			${sessionScope.x}
+			${x} page-->request-->session-->application
+	3、pageContext
+		${pageContext.request}
+		【掌握】
+		${pageContext.request.contextPath}
+	4、param
+		request.getParamter("username")
+		${param.username}
+	5、读取cookie【key-value】   "zhangsan":"法外狂徒"
+		${cookie.zhangsan.name} --->key
+		${cookie.zhangsan.value} --->value
+	6、读取对象的属性
+		${对象名.属性名} 对象中必须有get方法
+	7、读取集合或数组
+		${list[index]}
+			eg.  ${list[0].car_id} 
+		${array[index]}
+		
+JSTL
+1、语法
+	<%@ taglib uri="标签库的地址" prefix="c" %>	  eg. c:div
+2、开发步骤
+	1、导包
+	2、JSP头部声明
+3、核心库语法
+	c:if test=""
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
