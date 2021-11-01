@@ -1,0 +1,68 @@
+项目优化
+问题：数据库的连接被频繁的创建和销毁
+
+一、数据库连接池
+	1、没有连接池可能存在的问题
+		·频繁的创建和销毁连接会消耗大量的IO资源和时间，影响效率
+		·创建连接并不受程序控制，在大量创建连接之后，可能数据库崩溃
+	2、连接池的原理
+		·在项目启动时，初始化一定数量的连接 放入List<Connection>
+		·当你需要连接的时候，不需要去创建连接，而是从集合中获取 list.remove()
+		·当你使用完毕之后，不需要销毁连接，而是将连接放入集合中（可以被重复使用） list.add()
+	3、Java提供的连接池接口 
+		·javax.sql.*     DataSource ds = null;
+		·获取连接的方法 getConnection
+			Connection con = ds.getConnection();
+	4、连接池的实现
+		DBCP
+		·导包
+		·在src下配置数据库连接池的参数
+			初始化连接：程序启动时创建的连接数
+			最大连接数：池子的容量
+			等待时间：没有连接时等待的时间，如果超过时间还没有连接，就request timeout
+		·初始化空白数据源（私有、静态）
+		·读取配置文件
+		·初始化数据源 P289 line21
+		注意：
+			1、为外部提供数据源的get方法
+			2、需要编写获得连接的方法
+
+二、C3P0连接池
+	1、导包 lib下面  c3p0-0.9.5.2.jar  mchange-commons-java-0.2.12.jar
+	2、将配置文件拷贝到src下
+		·配置文件的名称已经规定好，不能随意修改
+		·必须在根目录下
+	3、创建空白数据源
+	4、自动读取src下面的xml文件
+	5、初始化数据源
+		dataSource = new ComboPooledDataSource();
+		
+三、单元测试
+1、导入单元测试包
+2、编写测试用例
+
+四、Druid阿里巴巴提供
+	1、导包 lib下面 druid-1.0.9.jar
+	2、将配置文件拷贝到src下
+		·读取properties文件
+		·配置连接池参数
+	3、创建空白数据源
+	4、读取properties文件
+	5、初始化数据源
+		DruidDataSourceFactory.createDataSource(pro);
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
