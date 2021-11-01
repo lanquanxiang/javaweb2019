@@ -51,7 +51,26 @@
 	5、初始化数据源
 		DruidDataSourceFactory.createDataSource(pro);
 
-	
+JDBCTemplate 优化对于数据库底层的操作
+	Spring框架提供
+1、导包
+
+
+1、初始化（需要连接池）
+	private JdbcTemplate template= new JdbcTemplate(DruidUtil.getDataSource());
+2、编写SQL
+
+3、执行（sql、不定参数、如果是查询，还需要类的反射）
+	1、更新
+		int n = template.update(sql,不定参数);
+	【提醒】jdbcTemplate必须具有查询结果，否则会抛异常。需要进行异常捕获
+	2、单个对象的查询
+		·java提供了RowMapper<T>接口，用于将数据表中的数据映射为JavaBean实例
+		·Spring提供了BeanPropertyRowMapper的实现类
+		template.queryForObject(sql,new BeanPropertyRowMapper<类型>(类型.class) ,不定参数);
+	3、多个值
+		template.query(sql,new BeanPropertyRowMapper<类型>(类型.class),不定参数);
+4、处理结果
 	
 	
 	

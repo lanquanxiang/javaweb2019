@@ -8,11 +8,11 @@
 </head>
 <body>
 ${msg}
-<form action="<%=request.getContextPath() %>/login" method="post">
+<form action="${pageContext.request.contextPath}/login" method="post">
 	name:<input type="text" name="name">
 	password:<input type="password" name="password">
 	<input type="submit" value="登录"/>
 </form>
-<a href="<%=request.getContextPath() %>/regist.jsp">注册</a>
+<a href="${pageContext.request.contextPath}/regist.jsp">注册</a>
 </body>
 </html>

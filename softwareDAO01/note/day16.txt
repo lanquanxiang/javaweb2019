@@ -1,0 +1,55 @@
+EL表达式
+1、语法
+	${表达式}   域对象中的数据   getAttribute("key")
+2、应用
+	1、运算
+		·算术运算  ${1+1}
+		·逻辑运算
+		·关系运算
+		·条件运算
+			表达式?A:B  empty判断某个对象是都为null或""	 true
+			${empty X?"":""}
+				否定  ${not empty X?"":""}
+	2、读取数据
+		·读取域对象中的数据
+			${xxxScope.key}   ${key}
+				如果没有指定作用域：page-->request-->session-->application
+		·pageContext
+			${pageContext.request}
+			${pageContext.request.contextPath}
+		·读取请求参数的值[实验]
+			getParameter("name")  ${param.name}
+			
+	3、读取对象的属性
+		${对象.属性名}  ${user.name}
+		
+		
+	4、读取cookie的值 key-value
+		value:   ${cookie.key.value}
+			cookie[username:zhangsan]
+				${cookie.username.value} == zhangsan
+	5、读取数组或者是集合
+		${array[0]}
+		${list[0]}
+
+		
+JSTL
+1、导包
+2、在JSP头部进行声明
+	P217 
+3、循环
+	varStatus
+		index
+		count
+	
+
+
+
+
+
+
+
+
+
+
+
