@@ -1,0 +1,17 @@
+分页显示
+1、目的（分页的作用/好处）
+	·减少网页中的数据量，提高用户体验，方便用户查看
+	·有效防止网页崩溃
+2、如何实现分页
+	·物理分页
+		实现：修改sql语句，根据需求到数据库中查询
+			select * from car limit start,length
+		第page页，每页显示num条
+			select * from car limit (page-1)*num,num
+	·逻辑分页
+		实现：对大的集合进行分割，按需返回
+		
+Ajax异步数据请求
+1、JS事件
+	文本框的值被改变并且失去焦点，开始检测用户名
+		onchange

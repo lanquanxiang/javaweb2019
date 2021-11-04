@@ -83,8 +83,12 @@ JSTL
 	1、导包
 	2、JSP头部声明
 3、核心库语法
-	c:if test=""
-	
+	分支语句：c:if test=""
+	多分支语句：c:choose   c:when  c:otherwise
+	循环:P223
+		
+		
+		
 	
 	
 	

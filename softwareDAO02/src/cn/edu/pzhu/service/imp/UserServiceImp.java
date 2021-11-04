@@ -65,4 +65,16 @@ public class UserServiceImp implements UserService{
 		return false;
 	}
 
+	@Override
+	public String check(String name) {
+		if (name==null || name.equals("")) {
+			return "用户名不合法!";
+		}
+		if (dao.select(name)==null) {
+			return "此用户可用!";	
+		}else{
+			return "用户名已经被注册!";
+		}
+	}
+
 }

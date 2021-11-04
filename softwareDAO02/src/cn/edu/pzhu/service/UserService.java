@@ -12,4 +12,7 @@ public interface UserService {
 	public Message changePwd(User user);
 	//销户
 	public boolean destroy(User user);
+	//检测用户名是否被占用
+	public String check(String name);
+	
 }
