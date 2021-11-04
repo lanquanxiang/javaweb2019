@@ -15,3 +15,30 @@ Ajax异步数据请求
 1、JS事件
 	文本框的值被改变并且失去焦点，开始检测用户名
 		onchange
+2、$.post(url,{json},function回调函数)
+
+
+Cookie
+1、会话技术，用来保存数据
+2、由服务器写，浏览器存（不安全、可以被扫描可以被清除）
+3、操作
+	·增加
+		new Cookie(name,value) 
+			name不能修改
+			value不能保存中文，可以修改【需要对中文进行编码解码】
+		response.addCookie(新增的cookie实例);
+	·删除
+		setMaxAge(int 有效的秒数);  0 delete
+	·修改
+		只能修改值 setValue
+	·查询
+		1、得到cookie
+			·request得到cookie的数组
+			·循环查找 通过name来找value
+		2、使用get方法
+
+
+
+
+
+
