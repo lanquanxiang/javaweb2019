@@ -41,6 +41,13 @@ JSTL
 	varStatus
 		index
 		count
+4、格式库
+	·声明
+	·<fmt:formatNumber>标签
+	·属性
+		value
+		type=数值、货币、百分比
+		pattern=正则表达式   .  00
 	
 
 

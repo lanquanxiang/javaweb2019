@@ -1,0 +1,13 @@
+分页显示
+1、为什么（作用）
+	·每次显示的数据有限，方便用户查看
+	·浏览器加载的数据有限，防止浏览器崩溃
+2、怎么实现
+	·物理分页
+		在数据库层面就进行分页（按照需求到数据库中进行查找）
+		用户需求：每页显示num条，显示第page页
+			select * from tablename limit start,length  
+				start从0开始的
+			select * from tablename limit (page-1)*num,num  
+	·逻辑分页
+		将所有数据全部查询到list中，按照需求对list进行分割
