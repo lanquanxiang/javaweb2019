@@ -55,8 +55,13 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public String check(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		if(name==null||name.equals("")){
+			return "输入的用户名不合法";
+		}
+		if(dao.selectById(name)==null){
+			return "此用户名可以使用";
+		}
+		return "用户名已经被注册";
 	}
 
 }

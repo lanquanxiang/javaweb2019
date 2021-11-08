@@ -9,8 +9,9 @@
 <body>
 ${msg}
 <form action="${pageContext.request.contextPath}/login" method="post">
-	name:<input type="text" name="name">
-	password:<input type="password" name="password">
+	name:<input type="text" name="name" value="${cookie.username.value }"><br/>
+	password:<input type="password" name="password" value="${cookie.password.value }"><br/>
+	<input type="checkbox" ${empty cookie.save.value?"":"checked"} name="save" value="yes"/>保存用户名和密码
 	<input type="submit" value="登录"/>
 </form>
 <a href="${pageContext.request.contextPath}/regist.jsp">注册</a>
