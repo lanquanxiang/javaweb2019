@@ -13,6 +13,7 @@ import cn.edu.pzhu.entity.Message;
 import cn.edu.pzhu.entity.User;
 import cn.edu.pzhu.service.UserService;
 import cn.edu.pzhu.service.UserServiceImp;
+import cn.edu.pzhu.util.Conver2MD5;
 
 /**
  * Servlet implementation class RegistServlet
@@ -49,7 +50,8 @@ public class LoginServlet extends HttpServlet {
 			cookie3.setMaxAge(0);
 			response.addCookie(cookie3);
 		}
-		User user = new User(name, password);
+		String password2 = Conver2MD5.getSHA256(Conver2MD5.getSHA256(password)+"pzhu");
+		User user = new User(name, password2);
 		//使用业务层接口的实现类来new一个业务层接口
 		UserService us = new UserServiceImp();
 		Message message =us.login(user);
