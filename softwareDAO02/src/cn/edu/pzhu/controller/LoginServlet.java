@@ -12,6 +12,7 @@ import cn.edu.pzhu.entity.Message;
 import cn.edu.pzhu.entity.User;
 import cn.edu.pzhu.service.UserService;
 import cn.edu.pzhu.service.imp.UserServiceImp;
+import cn.edu.pzhu.util.Conver2MD5;
 
 /**
  * Servlet implementation class LoginServlet
@@ -35,8 +36,9 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
+		String spassword =Conver2MD5.getSHA256(Conver2MD5.getSHA256(password)+"pzhu");
 		String save = request.getParameter("save");
-		User user = new User(name, password);
+		User user = new User(name, spassword);
 		//初始化业务层接口
 		UserService us = new UserServiceImp();
 		//调用业务层接口方法来的到执行结果
