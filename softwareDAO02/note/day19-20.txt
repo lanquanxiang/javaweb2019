@@ -1,0 +1,16 @@
+$.post(
+			"regist",
+			{name:new Date().getTime(),password:new Date().getTime()},
+			function(data){		
+			}
+	);
+	
+验证码
+1、什么是验证码
+2、分类
+	·图像识别类
+	·用户行为类
+	·逻辑推理类
+3、实践
+	1、视图层
+	2、控制层

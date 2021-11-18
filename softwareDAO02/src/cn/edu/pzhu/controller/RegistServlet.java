@@ -34,6 +34,17 @@ public class RegistServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
+		
+		String code = request.getParameter("code");
+		String answer = (String) request.getSession().getAttribute("answer");
+		if (answer==null || code == null || !code.equals(answer)) {
+			response.getWriter().print("<script>alert('验证码输入错误');"
+					+ "window.location.href='"+request.getContextPath()+"/regist.jsp"+"'</script>");
+			return;
+		}
+		
+		
+		
 		User user = new User(name, password);
 		//初始化业务层接口
 		UserService us = new UserServiceImp();
